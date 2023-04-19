@@ -9,28 +9,42 @@ class CharactersListItem extends Component {
     index: 0,
   };
 
-  //   addCharacters = ({ items }) => {
-  //     this.setState({
-  //       characters: [...items],
-  //     });
-  //   };
+  // removeBook = (id) => {
+  //   this.setState(({ books }) => {
+  //     const newBooks = books.filter((item) => item.id !== id);
+
+  //     return {
+  //       books: newBooks,
+  //     };
+  //   });
+  // };
 
   removeCharacter = (id) => {
-    const { items } = this.state;
+    this.setState(({ characters }) => {
+      const newCharacters = characters.filter((item) => item.id !== id);
 
-    const finalItems = items.filter((item) => item.id !== id);
-    return finalItems;
+      return {
+        characters: newCharacters,
+      };
+    });
   };
 
   render() {
-    const { items } = this.props;
+    const { characters } = this.state;
 
-    const elements = items.map(({ id, actor, character }) => (
+    const { removeCharacter } = this;
+
+    const elements = characters.map(({ id, actor, character }) => (
       <tr className={styles.tableRow} key={id}>
         <td>{actor}</td>
         <td>{character}</td>
         <td>
-          <TiDelete onClick={this.removeCharacter} className={styles.icon} />
+          <TiDelete
+            onClick={() => {
+              removeCharacter(id);
+            }}
+            className={styles.icon}
+          />
         </td>
       </tr>
     ));
