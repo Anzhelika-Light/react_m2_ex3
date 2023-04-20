@@ -1,11 +1,15 @@
-import CharactersList from "./components/CharactersList/CharactersList";
+// import CharactersList from "./components/CharactersList/CharactersList";
+import GoodsList from "./components/GoodsList/GoodsList";
+
+import Goods from "./data/goods.json";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <CharactersList />
+      {/* <CharactersList /> */}
+      <GoodsList items={Goods} />
     </div>
   );
 }

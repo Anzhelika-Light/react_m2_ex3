@@ -1,0 +1,23 @@
+.list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.item {
+  max-width: 200px;
+  border: 3px solid lightcoral;
+  border-radius: 5px;
+  background-color: lightgreen;
+  height: 60px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.active {
+  transform: scale(1.2);
+  background-color: rgb(91, 233, 91);
+  font-weight: bold;
+}
