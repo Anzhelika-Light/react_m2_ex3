@@ -1,23 +1,28 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
+
 import styles from "./characters-list.module.css";
 
 import { TiDelete } from "react-icons/ti";
 
 class CharactersListItem extends Component {
-  state = {
-    characters: [...this.props.items],
-    index: 0,
+  static defaultProps = {
+    items: [],
   };
 
-  // removeBook = (id) => {
-  //   this.setState(({ books }) => {
-  //     const newBooks = books.filter((item) => item.id !== id);
+  static propTypes = {
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        actor: PropTypes.string.isRequired,
+        character: PropTypes.string.isRequired,
+      })
+    ),
+  };
 
-  //     return {
-  //       books: newBooks,
-  //     };
-  //   });
-  // };
+  state = {
+    characters: [...this.props.items],
+  };
 
   removeCharacter = (id) => {
     this.setState(({ characters }) => {
