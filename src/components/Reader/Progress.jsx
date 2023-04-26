@@ -1,7 +1,24 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 import styles from "./reader.module.css";
 
 class Progress extends Component {
+  static defaultProps = {
+    onClick: () => {},
+    items: [],
+  };
+
+  static propTypes = {
+    onClick: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        caption: PropTypes.string.isRequired,
+        text: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      }).isRequired
+    ),
+  };
+
   handleClick = (index) => {
     const { onClick } = this.props;
     onClick(index);
@@ -9,7 +26,6 @@ class Progress extends Component {
 
   makeLiClassNames = (index) => {
     const { activeIndex } = this.props;
-    console.log(activeIndex);
     const classNames =
       activeIndex === index ? `${styles.item} ${styles.active}` : styles.item;
     return classNames;
@@ -29,6 +45,7 @@ class Progress extends Component {
         </li>
       );
     });
+
     return <ul className={styles.tabs__caption}>{elements}</ul>;
   }
 }

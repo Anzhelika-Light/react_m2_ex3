@@ -1,8 +1,26 @@
 import { Component } from "react";
-import styles from "./reader.module.css";
+
+import PropTypes from "prop-types";
+
 import Progress from "./Progress";
 
+import styles from "./reader.module.css";
+
 class Reader extends Component {
+  static defaultProps = {
+    items: [],
+  };
+
+  static propTypes = {
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        caption: PropTypes.string.isRequired,
+        text: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      }).isRequired
+    ),
+  };
+
   state = {
     activeIndex: 0,
   };
@@ -22,7 +40,6 @@ class Reader extends Component {
 
     return (
       <div className={styles.tabs}>
-        {/* <ul className={styles.tabs__caption}>{elements}</ul> */}
         <Progress
           onClick={this.setActiveIndex}
           activeIndex={this.state.activeIndex}

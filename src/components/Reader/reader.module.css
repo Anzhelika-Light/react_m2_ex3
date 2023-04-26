@@ -73,12 +73,12 @@ p {
   float: left;
   display: block;
 }
-.vertical .tabs__caption li {
+.vertical .tabs__caption .item {
   float: none;
   border-width: 2px 0 2px 2px;
   border-radius: 5px 0 0 5px;
 }
-.vertical .tabs__caption li:last-child:before {
+.vertical .tabs__caption .item:last-child:before {
   display: none;
 }
 .vertical .tabs__caption .active:after {
@@ -92,8 +92,7 @@ p {
 .vertical .tabs__content {
   overflow: hidden;
 }
- */
-/* @media screen and (max-width: 650px) {
+@media screen and (max-width: 650px) {
   .tabs__caption li {
     -webkit-flex: 1 0 auto;
     -ms-flex: 1 0 auto;
