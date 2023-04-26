@@ -1,0 +1,27 @@
+.title {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.item {
+  text-align: left;
+  margin-bottom: 25px;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.text {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.label {
+  font-weight: 700;
+}
+.icon {
+  color: red;
+  cursor: pointer;
+}

@@ -9,7 +9,7 @@ class Progress extends Component {
   };
 
   static propTypes = {
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
