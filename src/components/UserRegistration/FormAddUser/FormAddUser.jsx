@@ -23,6 +23,25 @@ class FormAddUser extends Component {
   nameId = nanoid();
   passwordId = nanoid();
 
+  componentDidMount() {
+    const data = JSON.parse(localStorage.getItem("data"));
+    if (data === null) {
+      return;
+    }
+    const { email, name, password } = data;
+    if (email !== "" || name !== "" || password !== "") {
+      this.setState({
+        email: data.email,
+        name: data.name,
+        password: data.password,
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("data", JSON.stringify(this.state));
+  }
+
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({
@@ -63,6 +82,7 @@ class FormAddUser extends Component {
             value={email}
             id={emailId}
             className={styles.field}
+            required
           />
         </div>
         <div className={styles.formGroup}>
@@ -76,6 +96,7 @@ class FormAddUser extends Component {
             value={name}
             id={nameId}
             className={styles.field}
+            required
           />
         </div>
         <div className={styles.formGroup}>
@@ -89,6 +110,7 @@ class FormAddUser extends Component {
             value={password}
             id={passwordId}
             className={styles.field}
+            required
           />
         </div>
         <button type="submit" className={styles.btn}>

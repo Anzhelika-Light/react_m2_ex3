@@ -10,5 +10,14 @@
 .wrapper {
   display: flex;
   justify-content: space-around;
-  align-items: start;
+  align-items: flex-start;
+}
+.label {
+  margin-right: 20px;
+}
+.field {
+  min-width: 250px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-bottom: 15px;
 }
