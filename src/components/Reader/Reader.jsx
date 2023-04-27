@@ -25,6 +25,22 @@ class Reader extends Component {
     activeIndex: 0,
   };
 
+  componentDidMount() {
+    const activeIndex = JSON.parse(localStorage.getItem("activeIndex"));
+    if (activeIndex !== null) {
+      this.setState({
+        activeIndex,
+      });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { activeIndex } = this.state;
+    if (prevState.activeIndex !== activeIndex) {
+      localStorage.setItem("activeIndex", JSON.stringify(activeIndex));
+    }
+  }
+
   setActiveIndex = (index) => {
     this.setState({ activeIndex: index });
   };
