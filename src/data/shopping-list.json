@@ -1,0 +1,26 @@
+[
+  {
+    "id": "id1",
+    "name": "Чайник",
+    "quantity": 1,
+    "price": 1200,
+    "urgency": false,
+    "type": "Посуд"
+  },
+  {
+    "id": "id2",
+    "name": "Миючий засіб для посуду",
+    "quantity": 2,
+    "price": 250,
+    "urgency": true,
+    "type": "Побутова хімія"
+  },
+  {
+    "id": "id3",
+    "name": "Печиво",
+    "quantity": 1,
+    "price": 50,
+    "urgency": false,
+    "type": "Продукти"
+  }
+]
