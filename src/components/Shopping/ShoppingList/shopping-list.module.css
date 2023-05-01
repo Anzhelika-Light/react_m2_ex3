@@ -10,4 +10,8 @@ table {
 }
 .completed {
   text-decoration: line-through;
+  color: gray;
+}
+.icon {
+  cursor: pointer;
 }

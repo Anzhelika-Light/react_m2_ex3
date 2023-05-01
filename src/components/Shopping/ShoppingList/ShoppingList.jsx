@@ -16,9 +16,7 @@ const ShoppingList = ({ purchases, onDeletePurchase, onToggleCompleted }) => {
               name=""
               id=""
               checked={completed}
-              onChange={() => {
-                onToggleCompleted(id);
-              }}
+              onChange={() => onToggleCompleted(id)}
             />
           </td>
           <td>{name}</td>
@@ -28,7 +26,7 @@ const ShoppingList = ({ purchases, onDeletePurchase, onToggleCompleted }) => {
           <td>{urgency}</td>
           <td>{type}</td>
           <td onClick={() => onDeletePurchase(id)}>
-            <FaTrashAlt />
+            <FaTrashAlt className={styles.icon} />
           </td>
         </tr>
       );
