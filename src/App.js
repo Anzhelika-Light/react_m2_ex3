@@ -4,9 +4,9 @@
 // import UserRegistration from "./components/UserRegistration/UserRegistration";
 import ShoppingPlan from "./components/Shopping/ShoppingPlan";
 
-// import Goods from "./data/goods.json";
+// import goods from "./data/goods.json";
 // import publications from "./data/publications.json";
-// import shoppingList from "./data/shopping-list.json";
+import shoppingList from "./data/shopping-list.json";
 
 import "./App.css";
 
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       {/* <CharactersList /> */}
-      {/* <GoodsList items={Goods} /> */}
+      {/* <GoodsList items={goods} /> */}
       {/* <Reader items={publications} /> */}
       {/* <UserRegistration /> */}
       <ShoppingPlan />

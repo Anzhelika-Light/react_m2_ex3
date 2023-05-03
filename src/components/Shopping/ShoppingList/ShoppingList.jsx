@@ -25,8 +25,11 @@ const ShoppingList = ({ purchases, onDeletePurchase, onToggleCompleted }) => {
           <td>{subtotal}</td>
           <td>{urgency}</td>
           <td>{type}</td>
-          <td onClick={() => onDeletePurchase(id)}>
-            <FaTrashAlt className={styles.icon} />
+          <td>
+            <FaTrashAlt
+              className={styles.icon}
+              onClick={() => onDeletePurchase(id)}
+            />
           </td>
         </tr>
       );
@@ -38,7 +41,7 @@ const ShoppingList = ({ purchases, onDeletePurchase, onToggleCompleted }) => {
       <caption></caption>
       <thead>
         <tr>
-          <th></th>
+          <th>Придбано</th>
           <th>Назва</th>
           <th>Кількість</th>
           <th>Ціна, грн</th>

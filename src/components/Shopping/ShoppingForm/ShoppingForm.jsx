@@ -7,27 +7,38 @@ class ShoppingForm extends Component {
     name: "",
     quantity: 0,
     price: 0,
-    checkbox: false,
-    select: "Продукти",
+    urgency: false,
+    type: "Продукти",
   };
 
   nameId = nanoid();
   quantityId = nanoid();
   priceId = nanoid();
+  urgencyId = nanoid();
+  typeId = nanoid();
 
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({
       [name]: value,
-      //   checkbox: !this.state.checkbox,
+      // urgency: !this.state.urgency,
     });
+    console.log(name);
+    console.log(value);
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { onSubmit } = this.props;
-    onSubmit(...this.state);
-    this.reset();
+    const { price, quantity } = this.state;
+    if (price <= 0 || quantity <= 0) {
+      alert("Кількість та ціна мають бути більше нуля");
+    } else {
+      const { onSubmit } = this.props;
+      onSubmit(this.state);
+      this.reset();
+    }
+
+    console.log(this.state);
   };
 
   reset() {
@@ -35,14 +46,22 @@ class ShoppingForm extends Component {
       name: "",
       quantity: 0,
       price: 0,
-      checkbox: false,
-      select: "Продукти",
+      urgency: false,
+      type: "Продукти",
     });
   }
 
   render() {
-    const { handleChange, handleSubmit, nameId, quantityId, priceId } = this;
-
+    const {
+      handleChange,
+      handleSubmit,
+      nameId,
+      quantityId,
+      priceId,
+      urgencyId,
+      typeId,
+    } = this;
+    const { name, quantity, price, urgency, type } = this.state;
     return (
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
@@ -53,8 +72,10 @@ class ShoppingForm extends Component {
             onChange={handleChange}
             type="text"
             name="name"
+            value={name}
             id={nameId}
             className={styles.field}
+            required
           />
         </div>
         <div className={styles.formGroup}>
@@ -65,8 +86,12 @@ class ShoppingForm extends Component {
             onChange={handleChange}
             type="number"
             name="quantity"
+            value={quantity}
+            min="0"
+            // step="0.1"
             id={quantityId}
             className={styles.field}
+            required
           />
         </div>
         <div className={styles.formGroup}>
@@ -77,30 +102,37 @@ class ShoppingForm extends Component {
             onChange={handleChange}
             type="number"
             name="price"
+            value={price}
+            min="0"
+            // step="0.1"
             id={priceId}
             className={styles.field}
+            required
           />
         </div>
         <div className={`${styles.formGroup} ${styles.checkboxGroup}`}>
           <input
             onChange={handleChange}
             type="checkbox"
-            name="checkbox"
-            id=""
+            name="urgency"
+            value={urgency}
+            id={urgencyId}
           />
-          <label htmlFor="" className={styles.label}>
+          <label htmlFor={urgencyId} className={styles.label}>
             Термінова покупка
           </label>
         </div>
         <div className={`${styles.formGroup} ${styles.checkboxGroup}`}>
-          <label htmlFor="" className={styles.label}>
+          <label htmlFor={typeId} className={styles.label}>
             Тип покупки
           </label>
           <select
             onChange={handleChange}
-            name="select"
-            id=""
+            name="type"
+            value={type}
+            id={typeId}
             className={styles.field}
+            required
           >
             <option value="Продукти">Продукти</option>
             <option value="Посуд">Посуд</option>

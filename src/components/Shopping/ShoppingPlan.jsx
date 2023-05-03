@@ -16,6 +16,7 @@ class ShoppingPlan extends Component {
       const newPurchase = {
         id: nanoid(),
         ...data,
+        completed: false,
       };
       return { purchases: [...prevState.purchases, newPurchase] };
     });
@@ -28,12 +29,20 @@ class ShoppingPlan extends Component {
   };
 
   toggleCompleted = (id) => {
-    this.setState(({ purchases }) =>
-      purchases.map((purchase) =>
+    this.setState((prevState) => ({
+      purchases: prevState.purchases.map((purchase) =>
         purchase.id === id
           ? { ...purchase, completed: !purchase.completed }
           : purchase
-      )
+      ),
+    }));
+  };
+
+  calculateCompletedPurchases = () => {
+    const { purchases } = this.state;
+    return purchases.reduce(
+      (total, purchase) => (purchase.completed ? total + 1 : total),
+      0
     );
   };
 
@@ -41,6 +50,7 @@ class ShoppingPlan extends Component {
     const { addPurchase } = this;
     const { purchases } = this.state;
     const totalCount = purchases.length;
+    const completedPurchaseCount = this.calculateCompletedPurchases();
     return (
       <div className={styles.container}>
         <div>
@@ -51,8 +61,12 @@ class ShoppingPlan extends Component {
           <p className={styles.text}>
             Загальна кількість покупок: {totalCount}
           </p>
-          <p className={styles.text}>Зроблено покупок: </p>
-          <p className={styles.text}>Залишилося пунктів:</p>
+          <p className={styles.text}>
+            Зроблено покупок: {completedPurchaseCount}
+          </p>
+          <p className={styles.text}>
+            Залишилося купити: {totalCount - completedPurchaseCount}
+          </p>
           <ShoppingList
             purchases={purchases}
             onDeletePurchase={this.deletePurchase}
