@@ -50,8 +50,10 @@ class Reader extends Component {
     const { activeIndex } = this.state;
 
     const currentItem = items[activeIndex];
-    const textElements = currentItem.text.map((item) => (
-      <p className={styles.text}>{item}</p>
+    const textElements = currentItem.text.map((item, index) => (
+      <p key={index} className={styles.text}>
+        {item}
+      </p>
     ));
 
     return (

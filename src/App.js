@@ -6,7 +6,7 @@ import ShoppingPlan from "./components/Shopping/ShoppingPlan";
 
 // import goods from "./data/goods.json";
 // import publications from "./data/publications.json";
-import shoppingList from "./data/shopping-list.json";
+// import shoppingList from "./data/shopping-list.json";
 
 import "./App.css";
 

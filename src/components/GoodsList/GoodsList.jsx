@@ -34,7 +34,11 @@ class GoodsList extends Component {
     const elements = items.map((item, index) => {
       const classNames = this.makeClassNames(index);
       return (
-        <li className={classNames} onClick={() => setActiveIndex(index)}>
+        <li
+          key={index}
+          className={classNames}
+          onClick={() => setActiveIndex(index)}
+        >
           {item}
         </li>
       );

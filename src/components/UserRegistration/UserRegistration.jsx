@@ -31,8 +31,9 @@ class UserRegistration extends Component {
   }
 
   addUser = (data) => {
-    if (this.alreadyExists(data)) {
-      return alert("This user already exist");
+    const checkMessage = this.alreadyExists(data);
+    if (checkMessage) {
+      return alert(checkMessage);
     }
 
     this.setState((prevState) => {
@@ -49,10 +50,17 @@ class UserRegistration extends Component {
 
   alreadyExists({ name, email }) {
     const { users } = this.state;
-    const result = users.find(
-      (user) => user.name === name || user.email === email
-    );
-    return result;
+    let message = "";
+    if (users.find((user) => user.name === name)) {
+      message += `${name} already exists`;
+    }
+    if (users.find((user) => user.email === email)) {
+      message += `${email} already exists`;
+    }
+    // const result = users.find(
+    //   (user) => user.name === name || user.email === email
+    // );
+    return message;
   }
 
   removeUser = (id) => {

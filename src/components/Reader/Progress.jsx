@@ -14,7 +14,6 @@ class Progress extends Component {
       PropTypes.shape({
         id: PropTypes.string.isRequired,
         caption: PropTypes.string.isRequired,
-        text: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
       }).isRequired
     ),
   };

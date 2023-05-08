@@ -5,8 +5,8 @@ import styles from "./shopping-form.module.css";
 class ShoppingForm extends Component {
   state = {
     name: "",
-    quantity: 0,
-    price: 0,
+    quantity: "",
+    price: "",
     urgency: false,
     type: "Продукти",
   };
@@ -18,10 +18,10 @@ class ShoppingForm extends Component {
   typeId = nanoid();
 
   handleChange = ({ target }) => {
-    const { name, value } = target;
+    const { name, value, checked, type } = target;
+    const newValue = type === "checkbox" ? checked : value;
     this.setState({
-      [name]: value,
-      // urgency: !this.state.urgency,
+      [name]: newValue,
     });
     console.log(name);
     console.log(value);
@@ -34,7 +34,7 @@ class ShoppingForm extends Component {
       alert("Кількість та ціна мають бути більше нуля");
     } else {
       const { onSubmit } = this.props;
-      onSubmit(this.state);
+      onSubmit({ ...this.state });
       this.reset();
     }
 
@@ -44,8 +44,8 @@ class ShoppingForm extends Component {
   reset() {
     this.setState({
       name: "",
-      quantity: 0,
-      price: 0,
+      quantity: "",
+      price: "",
       urgency: false,
       type: "Продукти",
     });

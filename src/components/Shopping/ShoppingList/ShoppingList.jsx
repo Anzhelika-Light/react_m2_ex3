@@ -23,7 +23,7 @@ const ShoppingList = ({ purchases, onDeletePurchase, onToggleCompleted }) => {
           <td>{quantity}</td>
           <td>{price}</td>
           <td>{subtotal}</td>
-          <td>{urgency}</td>
+          <td>{`${urgency}` === "true" ? "yes" : ""}</td>
           <td>{type}</td>
           <td>
             <FaTrashAlt
