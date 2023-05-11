@@ -23,8 +23,6 @@ class ShoppingForm extends Component {
     this.setState({
       [name]: newValue,
     });
-    console.log(name);
-    console.log(value);
   };
 
   handleSubmit = (e) => {
@@ -115,7 +113,7 @@ class ShoppingForm extends Component {
             onChange={handleChange}
             type="checkbox"
             name="urgency"
-            value={urgency}
+            checked={urgency}
             id={urgencyId}
           />
           <label htmlFor={urgencyId} className={styles.label}>
